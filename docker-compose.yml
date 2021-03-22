@@ -9,3 +9,14 @@ services:
     ports:
       - "5000:5000"
     command: -bind-address=:5000
+
+  loader:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    working_dir: /github.com/davidterranova/homework
+    depends_on:
+      - store
+    volumes:
+      - ./ports.json:/tmp/ports.json
+    command: -store-grpc-server="store:5000" -json-ports-file=/tmp/ports.json
