@@ -17,6 +17,8 @@
 - Implement the HTTP port and expose the search API defined in `api/http/port.yaml`
 - Implement a repository able to store / fetch data to / from a real database (either SQL / NoSQL)
 - Fix TODO in the project
+- Instrument services with prometheus / OpenTracing
+- Define a logging strategy and stick to it
 
 ## Requirements
 - Go v1.16+
