@@ -1,0 +1,79 @@
+openapi: "3.0.0"
+
+info:
+  version: 1.0.0
+  title: homework
+  contact:
+    name: david terranova
+    url: davidp.terranova[at]gmail.com
+servers:
+  - url: http://{hostname}/api
+    variables:
+      hostname:
+        default: localhost
+
+paths:
+  /v1/ports/search:
+    get:
+      tags:
+        - port
+      parameters:
+        - in: query
+          name: name
+          schema:
+            type: string
+            example: Ajman
+      responses:
+        '200':
+          description: the list of ports matching the query
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/port'
+        '400':
+          description: bad request, plz ensure all required fields are correctly filled
+        '500':
+          description: an unexpected error occured in the server
+
+components:
+  schemas:
+    coordinates:
+      type: object
+      properties:
+        latitude:
+          type: number
+          example: 55.5136433
+        longitude:
+          type: number
+          example: 25.4052165
+    port:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Ajman
+        city:
+          type: string
+          example: Ajman
+        country:
+          type: string
+          example: United Arab Emirates
+        alias:
+          type: array
+          example: []
+        regions:
+          type: array
+          example: []
+        coordinates:
+          $ref: '#/components/schemas/coordinates'
+        timezone:
+          type: string
+          example: "Asia/Dubai"
+        unlocs:
+          type: array
+          example: ["AEAUH"]
+        code:
+          type: string
+          example: "52000"
