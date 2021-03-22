@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package port.v1;
+option go_package = "github.com/dterranova/homework/api/genproto/v1";
+
+service PortService {
+  rpc Save(Port) returns (EmptyResponse) {}
+  rpc Search(PortQuery) returns (PortList) {}
+}
+
+message Port {
+  string id = 1;
+  string name = 2;
+  string city = 3;
+  string country = 4;
+  repeated string alias = 5;
+  repeated string regions = 6;
+  string province = 7;
+  repeated float coordinates = 8;
+  string timezone = 9;
+  repeated string unlocs = 10;
+  string code = 11;
+}
+
+message EmptyResponse {}
+
+message PortQuery {
+  string name = 1;
+}
+
+message PortList {
+  repeated Port ports = 1;
+}
