@@ -19,6 +19,7 @@
 - Fix TODO in the project
 - Instrument services with prometheus / OpenTracing
 - Define a logging strategy and stick to it
+- Define the HTTP Rest API based on gRPC Gateway to have a single API definition format that can both be used for service to service communication and regular REST based services
 
 ## Requirements
 - Go v1.16+
